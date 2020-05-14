@@ -77,8 +77,6 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv'
-    // // Doc: https://github.com/nuxt-community/apollo-module
-    // '@nuxtjs/apollo'
   ],
   /*
   ** Apollo module configuration
@@ -87,20 +85,10 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'https://pangaea-interviews.now.sh/api/graphql'
-        // browserHttpEndpoint: '/graphql',
-        // httpLinkOptions: {
-        //   credentials: 'same-origin'
-        // },
-        // wsEndpoint: 'ws://localhost:4000',
-        // tokenName: 'apollo-token',
-        // persisting: false,
-        // websocketsOnly: false
+        httpEndpoint: process.env.API_URL
       },
       test: {
-        httpEndpoint: 'https://pangaea-interviews.now.sh/api/graphql'
-        // wsEndpoint: 'ws://localhost:5000',
-        // tokenName: 'apollo-token'
+        httpEndpoint: process.env.API_URL
       }
     }
   },

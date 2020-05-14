@@ -18,6 +18,7 @@ module.exports = {
     'arrow-parens': 0,
     'vue/no-v-html': 0,
     'camelcase': 0,
-    'dot-notation': 1
+    'dot-notation': 1,
+    'space-before-function-paren': 0
   }
 }
