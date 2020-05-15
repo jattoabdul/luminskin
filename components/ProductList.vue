@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul class="product-list">
+    <ul class="product-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-gap-32 row-gap-20">
       <li v-for="product in products" :key="product.id" class="product-list__item">
         <product :product="product" :current-currency="currentCurrency" />
       </li>
@@ -29,22 +29,16 @@ export default {
         return 'USD'
       }
     }
-  },
-  computed: {},
-  methods: {}
+  }
 }
 </script>
 
 <style scoped lang="scss">
 .product-list {
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: stretch;
+  @apply px-24 py-24;
+  background-color: #e2e6e3;
 }
 .product-list__item {
   list-style: none;
-  width: 32%;
 }
 </style>

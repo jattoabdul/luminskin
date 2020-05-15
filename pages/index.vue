@@ -1,26 +1,27 @@
 <template>
-  <div class="container dark-color">
+  <div class="dark-color">
     <!-- nav -->
     <nav class="nav-bar">
-      <span>
-        Lumin
-      </span>
-      <ul>
-        <li>
+      <div class="links">
+        <nuxt-link to="/">
+          Lumin
+        </nuxt-link>
+        <nuxt-link to="/">
           Shop
-        </li>
-        <li>
+        </nuxt-link>
+        <nuxt-link to="/">
           Learn
-        </li>
-      </ul>
-      <span>
-        Account
-      </span>
-      <!-- cart icon & count -->
-      <span @click.stop="showCart = !showCart" class="cart-count">
-        cartsize: {{ cart | cartSize }}
-      </span>
-      <!--end of cart icon & count -->
+        </nuxt-link>
+      </div>
+      <div class="user-actions">
+        <nuxt-link to="/">
+          Account
+        </nuxt-link>
+        <div @click.stop="showCart = !showCart" class="cart">
+          <span class="cart-count">{{ cart | cartSize }}</span>
+          <img src="/arrows.svg" alt="cart-icon">
+        </div>
+      </div>
     </nav>
     <!-- end of nav -->
 
@@ -30,11 +31,14 @@
         <h1>
           All Products
         </h1>
+        <p>A 360<sup>°</sup> look at Lumin</p>
       </div>
-      <div>
-        <span>
-          Filter
-        </span>
+      <div class="filter">
+        <select name="filter">
+          <option value="null">
+            Filter by
+          </option>
+        </select>
       </div>
     </div>
     <!-- end of header -->
@@ -50,6 +54,7 @@
         :show-currency-selector="showCurrencySelector"
         :currency="currency"
         :cart="cart"
+        :show-cart="showCart"
         :current-currency="currentCurrency"
         :tax="tax"
       />
@@ -131,6 +136,9 @@ export default {
     this.$eventBus.$on('clear-cart', _ => {
       this.clearCart()
     })
+    this.$eventBus.$on('close-cart', _ => {
+      this.showCart = false
+    })
     this.$eventBus.$on('proceed-to-checkout', _ => {
       this.proceedToCheckout()
     })
@@ -201,7 +209,7 @@ export default {
     },
     proceedToCheckout() {
       console.log('checking out this cart =>', this.cart)
-      //  toast cart checked out
+      //  @TODO: toast cart checked out
       this.clearCart()
     },
     toggleCurrencySelector() {
@@ -212,16 +220,50 @@ export default {
 </script>
 
 <style scoped lang="scss">
-/* .container {
-  @apply min-h-screen flex justify-center items-center text-center mx-auto;
-} */
-.ash-color {
-  color: #e2e6e3;
-}
-.light-color {
-  color: #fcfcfa;
-}
 .dark-color {
   color: #4b5547;
+}
+
+.nav-bar {
+  @apply px-16 flex  items-center justify-between h-16;
+  border-top: #4b5547 solid 1px;
+  border-bottom: #4b55472a solid 1px;
+
+  .links {
+    a {
+      @apply px-3 mr-2;
+    }
+  }
+
+  .user-actions {
+    @apply flex items-center justify-between;
+
+    .cart {
+      @apply flex items-center justify-center relative px-3 py-1 ml-3;
+
+      .cart-count {
+        @apply absolute top-0 right-0;
+      }
+      img {
+        height: 1.5rem;
+      }
+    }
+  }
+}
+
+.header {
+  @apply flex items-end justify-between py-20 px-24;
+
+  h1 {
+    @apply text-3xl font-medium;
+  }
+
+  p {
+    @apply my-3;
+  }
+
+  .filter {
+    @apply border px-8 py-3;
+  }
 }
 </style>
