@@ -1,3 +1,4 @@
+// import gql from 'graphql-tag'
 
 export const state = () => ({
   products: [],
@@ -45,4 +46,38 @@ export const mutations = {
 
 export const getters = {}
 
-export const actions = {}
+export const actions = {
+  // nuxtServerInit({ commit }, { app }) {
+  //   const client = app.apolloProvider.defaultClient
+  //   client.query({
+  //     products: {
+  //       query: gql`
+  //         query getProducts($currency: Currency) {
+  //           products {
+  //             id
+  //             title
+  //             image_url
+  //             price(currency: $currency)
+  //           }
+  //         }
+  //     `,
+  //       variables() {
+  //         return {
+  //           currency: 'USD'
+  //         }
+  //       }
+  //     },
+  //     currency: gql`
+  //       query getCurrency {
+  //         currency
+  //       }
+  //     `
+  //   }).then(data => {
+  //     // commit('updateProjects', data.data.result.projects)
+  //     console.log(data)
+  //   })
+  //     .catch(error => {
+  //       console.error(error)
+  //     })
+  // }
+}
