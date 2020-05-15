@@ -1,50 +1,16 @@
 import Vue from 'vue'
+import getSymbolFromCurrency from 'currency-symbol-map'
 
 Vue.mixin({
   methods: {
-    logout () {
-      this.$router.push('/logout')
-    },
-    isServerError (errorMessage) {
-      return errorMessage.split(' ').some(err => [500, 501, 502, 503, 504].includes(parseInt(err)))
-    },
-    back () {
-      if (document.referrer.includes(window.location.host)) {
-        this.$router.back()
-      } else {
-        this.$router.push(this.$route.path.split('/').slice(0, -1).join('/'))
+    getCurrencySymbol(currency) {
+      const foundCurrency = getSymbolFromCurrency(currency)
+      if (foundCurrency) {
+        return foundCurrency
       }
+      return currency
     },
-    shortName (name) {
-      if (!name) { return '' }
-      if (name.split(' ').length > 1) {
-        return name.split(' ')[0]
-      }
-      if (name.length > 12) {
-        return name.substr(0, 12) + '..'
-      }
-      return name
-    },
-    extractNum (str) {
-      const strMatch = str.match(/\d+/g)
-      if (!strMatch) { return '' }
-      return strMatch.join('')
-    },
-    expectedDateStart (shipmentDate) {
-      if (!shipmentDate) { return '' }
-
-      return this.formatDate(new Date(new Date(shipmentDate).getTime() + (1000 * 60 * 60 * 24 * 10)))
-    },
-    expectedDate (shipmentDate) {
-      if (!shipmentDate) { return '' }
-
-      return this.formatDate(new Date(new Date(shipmentDate).getTime() + (1000 * 60 * 60 * 24 * 14)))
-    },
-    formatDate (time) {
-      const dateTime = new Date(time)
-      return `${this.$monthShort[dateTime.getMonth()]} ${dateTime.getDate()}, ${dateTime.getFullYear()}`
-    },
-    isEqual (value, other) {
+    isEqual(value, other) {
       // Get the value type
       const type = Object.prototype.toString.call(value)
 
