@@ -59,6 +59,7 @@
 </template>
 
 <script>
+// @TODO: use vuex to keep track of application state
 import gql from 'graphql-tag'
 import ProductList from '~/components/ProductList'
 import Cart from '~/components/Cart'
