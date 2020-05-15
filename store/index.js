@@ -7,8 +7,7 @@ export const state = () => ({
   cartSubTotal: 0,
   cartTotal: 0,
   currentCurrency: 'USD',
-  showCart: false,
-  checkoutBool: false
+  showCart: false
 })
 
 export const mutations = {
@@ -34,7 +33,6 @@ export const mutations = {
     state.cart = []
     state.cartSubTotal = 0
     state.cartTotal = 0
-    state.checkoutBool = false
     state.showCart = false
   },
   quantityChange(state, product, direction) {

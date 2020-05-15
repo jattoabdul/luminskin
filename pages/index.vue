@@ -86,7 +86,6 @@ export default {
       cart: [],
       tax: 0.065,
       cartSubTotal: 0,
-      checkoutBool: false,
       showCart: false,
       showCurrencySelector: false
     }
@@ -157,21 +156,17 @@ export default {
         product.quantity = 1
         this.cart.push(product)
       }
-      this.checkoutBool = true
+      // open sidebar
+      this.showCart = true
     },
     removeProduct (product) {
       const index = this.cart.indexOf(product)
       this.cart.splice(index, 1)
-
-      if (this.cart.length <= 0) {
-        this.checkoutBool = false
-      }
     },
     clearCart () {
       this.cart = []
       this.cartSubTotal = 0
       this.cartTotal = 0
-      this.checkoutBool = false
       this.showCart = false
       this.showCurrencySelector = false
     },
@@ -192,10 +187,6 @@ export default {
             }
           }
         }
-      }
-
-      if (this.cart.length <= 0) {
-        this.checkoutBool = false
       }
     },
     selectCurrency(index) {
