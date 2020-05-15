@@ -54,6 +54,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/universal', ssr: true },
     { src: '~/plugins/mixins', ssr: true },
     { src: '~/plugins/front-only', ssr: false }
   ],
