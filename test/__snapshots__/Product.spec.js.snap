@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Product renders correctly 1`] = `
+<div class="product thumbnail"><img src="image.svg" alt="product title" class="product__image">
+  <div class="caption">
+    <h3 class="product__title">
+      product title
+    </h3>
+    <div class="product__price">
+      $100.00
+    </div>
+    <div class="product__button-wrap"><button class="btn btn-primary">
+        Add to cart
+      </button></div>
+  </div>
+</div>
+`;

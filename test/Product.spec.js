@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Cart from '@/components/Cart.vue'
+import Product from '@/components/Product.vue'
 import Vue from 'vue'
 import VueCurrencyFilter from 'vue-currency-filter'
 import getSymbolFromCurrency from 'currency-symbol-map'
@@ -24,31 +24,23 @@ Vue.mixin({
   }
 })
 
-const products = [
-  {
-    id: 1,
-    title: 'product title',
-    price: 100,
-    image_url: 'image.svg'
-  }
-]
-const currency = ['USD', 'NGN']
+const product = {
+  id: 1,
+  title: 'product title',
+  price: 100,
+  image_url: 'image.svg'
+}
 
 const factory = () => {
-  return shallowMount(Cart, {
+  return shallowMount(Product, {
     propsData: {
-      showCurrencySelector: false,
-      currency,
-      cart: [],
       currentCurrency: 'USD',
-      tax: 0.065,
-      showCart: false,
-      products
+      product
     }
   })
 }
 
-describe('Cart', () => {
+describe('Product', () => {
   test('mounts properly', () => {
     const wrapper = factory()
     expect(wrapper.vm).toBeTruthy()
