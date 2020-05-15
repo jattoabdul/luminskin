@@ -6,6 +6,7 @@
 
 ```bash
 # install dependencies
+$ nvm use
 $ yarn install
 
 # serve with hot reload at localhost:3000
