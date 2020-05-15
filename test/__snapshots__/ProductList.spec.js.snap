@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductList renders correctly 1`] = `
+<div>
+  <ul class="product-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-gap-32 row-gap-20">
+    <li class="product-list__item">
+      <product-stub product="[object Object]" currentcurrency="USD"></product-stub>
+    </li>
+  </ul>
+</div>
+`;
